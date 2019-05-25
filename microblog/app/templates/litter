@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+#chartdiv {
+	width	: 100%;
+	height	: 500px;
+}
+
+.map-marker {
+    /* adjusting for the marker dimensions 
+    so that it is centered on coordinates */
+    margin-left: -8px;
+    margin-top: -8px;
+}
+.map-marker.map-clickable {
+    cursor: pointer;
+}
+.pulse {
+		width: 10px;
+		height: 10px;
+		border: 5px solid #f7f14c;
+		-webkit-border-radius: 30px;
+		-moz-border-radius: 30px;
+		border-radius: 30px;
+		background-color: #716f42;
+		z-index: 10;
+		position: absolute;
+	}
+.map-marker .dot {
+		border: 10px solid #fff601;
+		background: transparent;
+		-webkit-border-radius: 60px;
+		-moz-border-radius: 60px;
+		border-radius: 60px;
+		height: 50px;
+		width: 50px;
+		-webkit-animation: pulse 3s ease-out;
+		-moz-animation: pulse 3s ease-out;
+		animation: pulse 3s ease-out;
+		-webkit-animation-iteration-count: infinite;
+		-moz-animation-iteration-count: infinite;
+		animation-iteration-count: infinite;
+		position: absolute;
+		top: -25px;
+		left: -25px;
+		z-index: 1;
+		opacity: 0;
+	}
+	@-moz-keyframes pulse {
+	 0% {
+	   	-moz-transform: scale(0);
+	   	opacity: 0.0;
+	 }
+	 25% {
+	   	-moz-transform: scale(0);
+	   	opacity: 0.1;
+	 }
+	 50% {
+	   	-moz-transform: scale(0.1);
+	   	opacity: 0.3;
+	 }
+	 75% {
+	   	-moz-transform: scale(0.5);
+	   	opacity: 0.5;
+	 }
+	 100% {
+	   	-moz-transform: scale(1);
+	   	opacity: 0.0;
+	 }
+	}
+	@-webkit-keyframes "pulse" {
+	 0% {
+	    -webkit-transform: scale(0);
+	   	opacity: 0.0;
+	 }
+	 25% {
+	    -webkit-transform: scale(0);
+	   	opacity: 0.1;
+	 }
+	 50% {
+	    -webkit-transform: scale(0.1);
+	   	opacity: 0.3;
+	 }
+	 75% {
+	    -webkit-transform: scale(0.5);
+	   	opacity: 0.5;
+	 }
+	 100% {
+	    -webkit-transform: scale(1);
+	   	opacity: 0.0;
+	 }
+	}		
+ </style>
+ <body>
+ <div id="chartdiv"></div>	
+ </body>
+ <script>
+ var map = AmCharts.makeChart("chartdiv", {
+    type: "map",
+    "theme": "light",
+    pathToImages: "https://www.amcharts.com/lib/3/images/",
+
+    imagesSettings: {
+        rollOverColor: "#089282",
+        rollOverScale: 3,
+        selectedScale: 3,
+        selectedColor: "#089282",
+        color: "#08f"//#13564e"
+    },
+
+    zoomControl: {
+        buttonFillColor: "#15A892"
+    },
+
+    areasSettings: {
+        unlistedAreasColor: "#15A892"
+    },
+
+    dataProvider: {
+        map: "worldLow",
+        images: [{
+            zoomLevel: 5,
+            scale: 0.5,
+            title: "Токмак",
+            latitude: 47.12,
+            longitude: 35.42
+        }, {
+            zoomLevel: 5,
+            scale: 0.5,
+            title: "Бердичев",
+            latitude: 49.53,
+            longitude: 28.34
+        }, {
+            zoomLevel: 5,
+            scale: 0.5,
+            title: "Днепропетровск",
+            latitude: 48.27,
+            longitude: 35.02
+        }, {
+            zoomLevel: 5,
+            scale: 0.5,
+            title: "Киев",
+            latitude: 57.27,
+            longitude: 30.31
+        }, {
+            zoomLevel: 5,
+            scale: 0.5,
+            title: "Комсомольск-на-Амуре",
+            latitude: 50.34,
+            longitude: 137.00
+        }, {
+            zoomLevel: 5,
+            scale: 0.5,
+            title: "Липецк",
+            latitude: 52.36,
+            longitude: 39.35
+        }, {
+            zoomLevel: 5,
+            scale: 0.5,
+            title: "Мариуполь",
+            latitude: 47.05,
+            longitude: 37.32,
+        }, {
+            zoomLevel: 5,
+            scale: 0.5,
+            title: "Минск",
+            latitude: 53.54,
+            longitude: 27.34
+        }, {
+            zoomLevel: 5,
+            scale: 0.5,
+            title: "Москва",
+            latitude: 55.45,
+            longitude: 37.37
+        }, {
+            zoomLevel: 5,
+            scale: 0.5,
+            title: "Набережные Челны",
+            latitude: 55.43,
+            longitude: 52.22,
+        }, {
+            zoomLevel: 5,
+            scale: 0.5,
+            title: "Нижний Новгород",
+            latitude: 56.17,
+            longitude: 43.56
+        }, {
+            zoomLevel: 5,
+            scale: 1,
+            title: "Новосибирск",
+            latitude: 55.00,
+            longitude: 82.56
+        }, {
+            zoomLevel: 5,
+            scale: 0.5,
+            title: "Одесса",
+            latitude: 46.28,
+            longitude: 30.43
+        }, {
+            zoomLevel: 5,
+            scale: 0.5,
+            title: "Полтава",
+            latitude: 49.35,
+            longitude: 34.33
+        }, {
+            zoomLevel: 5,
+            scale: 0.5,
+            title: "Ростов на Дону",
+            latitude: 47.14,
+            longitude: 39.42
+        }, {
+            zoomLevel: 5,
+            scale: 0.5,
+            title: "Санкт Петербург",
+            latitude: 59.56,
+            longitude: 30.20
+        }, {
+            zoomLevel: 5,
+            scale: 0.5,
+            title: "ст. Ленинградская",
+            latitude: 46.19,
+            longitude: 39.23
+        }, {
+            zoomLevel: 5,
+            scale: 0.5,
+            title: "Ставрополь",
+            latitude: 45.02,
+            longitude: 41.59
+        }, {
+            zoomLevel: 5,
+            scale: 0.5,
+            title: "Хмельницкий",
+            latitude: 49.25,
+            longitude: 28.1876
+        }, {
+            zoomLevel: 5,
+            scale: 0.5,
+            title: "Электросталь",
+            latitude: 55.47,
+            longitude: 38.26
+        }, {
+            zoomLevel: 5,
+            scale: 0.5,
+            title: "Нижний Тагил",
+            latitude: 57.55,
+            longitude: 59.58
+        }, {
+            zoomLevel: 5,
+            scale: 0.5,
+            title: "Нижний Тагил",
+            latitude: 8.39,
+            longitude: 115.12
+        }]
+    }
+});
+
+
+map.addListener("positionChanged", updateCustomMarkers);
+
+
+function updateCustomMarkers (event) {
+    // get map object
+    var map = event.chart;
+    
+    // go through all of the images
+    for( var x in map.dataProvider.images) {
+        // get MapImage object
+        var image = map.dataProvider.images[x];
+        
+        // check if it has corresponding HTML element
+        if ('undefined' == typeof image.externalElement)
+            image.externalElement = createCustomMarker(image);
+
+        // reposition the element accoridng to coordinates
+        image.externalElement.style.top = map.latitudeToY(image.latitude) + 'px';
+        image.externalElement.style.left = map.longitudeToX(image.longitude) + 'px';
+    }
+}
+
+
+function createCustomMarker(image) {
+    // create holder
+    var holder = document.createElement('div');
+    holder.className = 'map-marker';
+    holder.title = image.title;
+    holder.style.position = 'absolute';
+    
+    // maybe add a link to it?
+    if (undefined != image.url) {
+        holder.onclick = function() {
+            window.location.href = image.url;
+        };
+        holder.className += ' map-clickable';
+    }
+    
+    // create dot
+    var dot = document.createElement('div');
+    dot.className = 'dot';
+    holder.appendChild(dot);
+    
+    // create pulse
+    var pulse = document.createElement('div');
+    pulse.className = 'pulse';
+    holder.appendChild(pulse);
+    
+    // append the marker to the map container
+    image.chart.chartDiv.appendChild(holder);
+    
+    return holder;
+}
+ 
+ </script>
+</html>
