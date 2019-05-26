@@ -7,12 +7,12 @@ var ctx = document.getElementById("myBarChart");
 var myLineChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["Май", "Апрель", "Май", "Июнь", "Июль", "Август"],
+    labels: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь"],
     datasets: [{
       label: "Недостатки дорожного покрытия",
       backgroundColor: "rgba(2,117,216,1)",
       borderColor: "rgba(2,117,216,1)",
-      data: [5312, 6251, 7841, 9821, 14984, 0],
+      data: [250, 300, 320, 350, 360, 0],
     }],
   },
   options: {
@@ -48,3 +48,5 @@ orderChannel.bind('place', function(data) {
   myLineChart.update();
   order.innerText = parseInt(order.innerText)+1
 });
+
+

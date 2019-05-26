@@ -11,6 +11,38 @@
    }
 
 </style>
+<script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2", // "light1", "light2", "dark1", "dark2"
+	title:{
+		text: ""
+	},
+	axisY: {
+		title: "Число случаев"
+	},
+	data: [{        
+		type: "column",  
+		showInLegend: true, 
+
+		dataPoints: [      
+			{ y: 300878, label: "Venezuela" },
+			{ y: 266455,  label: "Saudi" },
+			{ y: 169709,  label: "Canada" },
+			{ y: 158400,  label: "Iran" },
+			{ y: 142503,  label: "Iraq" },
+			{ y: 101500, label: "Kuwait" },
+			{ y: 97800,  label: "UAE" },
+			{ y: 80000,  label: "Russia" }
+		]
+	}]
+});
+chart.render();
+
+}
+</script>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -36,33 +68,11 @@
   <div class="container-fluid">
   <h2 align="center">Анализ преступлений</h2>
 
-<div class="row">
 
-        <div class="col-lg-12">
-          <div class="card mb-3">
- 
-            <div class="card-body">
-              <div class="row">
-                <div class="col-sm-8 my-auto">
-                  <canvas id="myBarChart" width="600" height="200"></canvas>
-                </div>
-                <div class="col-sm-4 text-center my-auto">
-                  <div class="h4 mb-0 text-primary">34,693</div>
-                  <div class="small text-muted">Убийство</div>
-                  <hr>
-                  <div class="h4 mb-0 text-warning">18,474</div>
-                  <div class="small text-muted">Кража</div>
-                  <hr>
-
-                </div>
-                </div>
-              </div>
-            </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-          </div>
-        </div>
-
-      </div>
+	  <div>
+	  <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+	  </div>
                  <div class="chart" id="bargraph">
 				<script>
 					var graphs = {{plot | safe}};
