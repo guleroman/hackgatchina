@@ -16,9 +16,6 @@ import os
 
 import twitter
 
-#import nltk
-
-
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 # add your google maps api key here
@@ -149,7 +146,9 @@ def result():
 @app.route('/home')
 def dash_overview():
 	return render_template('olddashboard.html')
-
+@app.route('/admin')
+def admin():
+	return render_template('admin.html')
 @app.route('/')
 def dash_overview_2():
 	return render_template('olddashboard.html')

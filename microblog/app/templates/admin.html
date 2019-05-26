@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Панель управления цифровым кабинетом</h1>
+
+<h3>Для сбора данных выберете файл (*.gpx)</h3>
+<form action="/action_page.php">
+  Выбрать файл <input type="file" name="myFile"><br><br>
+
+</form>
+    <input type="button" id='script' name="scriptbutton" value=" Поехали " onclick="goPython()">
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <script>
+        function goPython(){
+            $.ajax({
+              url: "MYSCRIPT.py",
+             context: document.body
+            }).done(function() {
+             alert('finished python script');;
+            });
+        }
+    </script>
+<h3>Перейти на сервис для формирования файла</h3>
+
+ <button class="btn btn-success" onclick=" window.open('https://www.plotaroute.com/routeplanner','_blank')"> Перейти</button>
+
+</body>
+</html>

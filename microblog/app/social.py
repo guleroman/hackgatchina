@@ -60,6 +60,7 @@ from matplotlib.figure import Figure
 my_google_maps_api_key = 'AIzaSyCLXxaOd3K8TmDd21PYtP8nK_ibDZ4h8Ss'
 mapbox_access_token = 'pk.eyJ1IjoiamFja2x1byIsImEiOiJjajNlcnh3MzEwMHZtMzNueGw3NWw5ZXF5In0.fk8k06T96Ml9CLGgKmk81w'
 plotly.tools.set_credentials_file(username='sadrik81', api_key='L63ZtbLhPRTl01T9ykKn')
+
 def callback(name):
     #----------------------------------------------------------------------обращение к API Twitter
 
@@ -71,9 +72,30 @@ def callback(name):
     auth = twitter.oauth.OAuth(OAUTH_TOKEN, OAUTH_TOKEN_SECRET,
                                CONSUMER_KEY, CONSUMER_SECRET)
     twitter_api = twitter.Twitter(auth=auth)
-    tweet=twitter_api.search.tweets(q=name, count="100")
+    tweet=twitter_api.search.tweets(q=name, count="15")
     p = json.dumps(tweet)
     res2 = json.loads(p)
-    print (u'Получено сообщений: ',len(res2['statuses']))
-    #print (res2['statuses'][0]['text'])
+    j=0
+    post=[]
+    lang=[]
+    while j<len(res2['statuses']):
+        dict1={'author': {'username': (res2['statuses'][j]['user']['name'])},
+            'body': res2['statuses'][j]['text'].encode('utf-8')}
+        #print (u'Получено сообщений: ',len(res2['statuses']))
+        lang.append(res2['statuses'][j]['user']['lang'])
+        """
+        print (res2['statuses'][j]['text'].encode('utf-8'))
+        print (str(res2['statuses'][j]['user']['name']).encode('utf-8'))
+        print (res2['statuses'][j]['created_at'])
+        print (res2['statuses'][j]['user']['followers_count'])
+        print (res2['statuses'][j]['user']['lang'])
+        print (res2['statuses'][j]['user']['statuses_count'])
+        """
+        post.append(dict1)
+        j=j+1
+    t =list( Counter(lang).keys())
+    s = list(Counter(lang).values())
+    print (t,s)
+
+
 callback('Saint-Petersburg')
