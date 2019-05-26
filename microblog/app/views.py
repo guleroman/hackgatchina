@@ -19,17 +19,17 @@ import twitter
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 # add your google maps api key here
-my_google_maps_api_key = 'AIzaSyCLXxaOd3K8TmDd21PYtP8nK_ibDZ4h8Ss'
-mapbox_access_token = 'pk.eyJ1IjoiamFja2x1byIsImEiOiJjajNlcnh3MzEwMHZtMzNueGw3NWw5ZXF5In0.fk8k06T96Ml9CLGgKmk81w'
-plotly.tools.set_credentials_file(username='sadrik81', api_key='L63ZtbLhPRTl01T9ykKn')
+my_google_maps_api_key = ''
+mapbox_access_token = 'pk..'
+plotly.tools.set_credentials_file(username='', api_key='')
 def callback():
     #----------------------------------------------------------------------обращение к API Twitter
 
 
-    CONSUMER_KEY = '3NTp6bVmDdLPXo8bjW4syW7uk'
-    CONSUMER_SECRET = 'GkSBgJTExl54xmkOJxA2M0LFnhpyWwAuYDs4jRUEo8nxKz1H8S'
-    OAUTH_TOKEN = '2308267840-slR7ovWLIIJtXeMlwXlAfzauWkkpGHSMm9cm6ct'
-    OAUTH_TOKEN_SECRET = 'pGjYDpoRI2Zu4W5b5yLBGOXYQAOOGeBoH0CHt3oBZdVvt'
+    CONSUMER_KEY = ''
+    CONSUMER_SECRET = ''
+    OAUTH_TOKEN = ''
+    OAUTH_TOKEN_SECRET = ''
     auth = twitter.oauth.OAuth(OAUTH_TOKEN, OAUTH_TOKEN_SECRET,
                                CONSUMER_KEY, CONSUMER_SECRET)
     twitter_api = twitter.Twitter(auth=auth)
@@ -112,10 +112,10 @@ def home():
 	return render_template('social_true.html')
 @app.route('/result')
 def result():
-    CONSUMER_KEY = '3NTp6bVmDdLPXo8bjW4syW7uk'
-    CONSUMER_SECRET = 'GkSBgJTExl54xmkOJxA2M0LFnhpyWwAuYDs4jRUEo8nxKz1H8S'
-    OAUTH_TOKEN = '2308267840-slR7ovWLIIJtXeMlwXlAfzauWkkpGHSMm9cm6ct'
-    OAUTH_TOKEN_SECRET = 'pGjYDpoRI2Zu4W5b5yLBGOXYQAOOGeBoH0CHt3oBZdVvt'
+    CONSUMER_KEY = ''
+    CONSUMER_SECRET = ''
+    OAUTH_TOKEN = ''
+    OAUTH_TOKEN_SECRET = ''
     auth = twitter.oauth.OAuth(OAUTH_TOKEN, OAUTH_TOKEN_SECRET,
                                CONSUMER_KEY, CONSUMER_SECRET)
     twitter_api = twitter.Twitter(auth=auth)
