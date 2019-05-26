@@ -17,47 +17,7 @@ import plotly.plotly as py
 import plotly.graph_objs as go
 from PIL import ImageTk, Image
 import os
-import webbrowser
 import twitter
-import json
-import time
-import nltk
-from nltk.tokenize import RegexpTokenizer
-from stop_words import get_stop_words
-import numpy as np
-import pandas as pd
-import nltk
-import re
-import os
-import codecs
-from sklearn import feature_extraction
-import mpld3
-from nltk.stem.snowball import SnowballStemmer
-import string
-from nltk.stem.porter import PorterStemmer
-import warnings
-warnings.filterwarnings(action='ignore', category=UserWarning, module='gensim')
-from gensim import corpora, models, similarities 
-import gensim
-import os 
-import matplotlib.pyplot as plt
-import matplotlib as mpl
-from sklearn.manifold import MDS
-from sklearn.decomposition import NMF
-import re
-from sklearn.feature_extraction.text import TfidfVectorizer
-from wordcloud import WordCloud
-from collections import Counter
-from nltk.classify import NaiveBayesClassifier
-from nltk.classify.util import accuracy
-import matplotlib
-matplotlib.use('TkAgg')
-from numpy import arange, sin, pi
-#from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
-# implement the default mpl key bindings
-from matplotlib.backend_bases import key_press_handler
-from matplotlib.figure import Figure
-# add your google maps api key here
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False

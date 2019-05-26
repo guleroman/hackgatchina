@@ -10,3 +10,4 @@ tensorflow
 plotly
 pandas
 googlemaps
+twitter
