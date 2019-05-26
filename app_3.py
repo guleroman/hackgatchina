@@ -11,13 +11,15 @@ from utils import label_map_util
 from utils import visualization_utils as vis_util
 import cv2
 import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
 import json
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 
 
-PATH_TO_CKPT = 'trainedModels/ssd_mobilenet_RoadDamageDetector.pb' # Путь к обученной модели нейросети
+
+PATH_TO_CKPT = 'trainedModels/ssd_inception_RoadDamageDetector.pb' # Путь к обученной модели нейросети
 PATH_TO_LABELS = 'trainedModels/crack_label_map.pbtxt'  # Путь к label-файлу
 NUM_CLASSES = 8
 IMAGE_SIZE = (12, 8)
@@ -32,9 +34,22 @@ with detection_graph.as_default():
         serialized_graph = fid.read()
         od_graph_def.ParseFromString(serialized_graph)
         tf.import_graph_def(od_graph_def, name='')
+        
+#ip = '12.12.12.12'
+#def say_hi(new_file_name,dataa):
+ #   link = ip + '/api'
+ #   files = {
+  #      'format': (None, 'jpg'),
+  #      'file': (new_file_name, open(new_file_name, 'rb')),
+ #   }
+    #try:
+ #   requests.post(link, files = files, data = json.dumps(dataa,ensure_ascii=True), timeout=0.001)
+    #except:
+ #   print ("Выполнил - ok")
 
+        
 @app.route('/api/<file_name>',methods=['GET'])
-def write_image(file_name):      
+def write_image(file_name):
     with detection_graph.as_default():
         with tf.Session(graph=detection_graph) as sess:
             IMAGE_PATH = '/home/ml/RoadDamageDetector/33/'+file_name
@@ -63,10 +78,28 @@ def write_image(file_name):
             category_index,
             min_score_thresh=0.3,
             use_normalized_coordinates=True,
-            line_thickness=8)
-            plt.figure(figsize=IMAGE_SIZE)
-            plt.savefig('new'+file_name)
-    return jsonify('ok')
+            line_thickness=3)
+            #plt.figure(figsize=IMAGE_SIZE)
+            #plt.imshow(image_np)
+            #plt.savefig('new'+file_name)
+            mpimg.imsave('new_'+file_name,image_np)
+            #print (num_detections)
+           # print (boxes)
+            crack_num = 0
+            pits_num = 0
+            markup_num = 0
+            for i in range(len(scores[0])):
+                if scores[0][i] > 0.3:
+                    if int(classes[0][i]) == 6:
+                        pits_num += 1
+                    elif (int(classes[0][i]) == 7) or (int(classes[0][i]) == 8):
+                        markup_num += 1
+                    else:
+                        crack_num += 1
+            print (crack_num, pits_num, markup_num)
+            dataa = {"crack_num":crack_num, "pits_num":pits_num, "markup_num":markup_num}
+            say_hi('new_'+file_name,dataa)
+    return jsonify(dataa)
 
 if __name__ == '__main__':
 
