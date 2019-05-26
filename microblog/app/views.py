@@ -1,5 +1,5 @@
 ﻿from flask import render_template, Flask
-from app import app
+
 import plotly
 import plotly.graph_objs as go
 
