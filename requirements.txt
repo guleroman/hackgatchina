@@ -1,13 +1,8 @@
 flask
-uuid
-requests
 numpy
-tensorflow
 pillow
 opencv-python
 matplotlib
-tensorflow
 plotly
 pandas
-googlemaps
 twitter
