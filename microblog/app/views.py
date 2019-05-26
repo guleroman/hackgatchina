@@ -138,7 +138,7 @@ def dash_overview():
 	return render_template('olddashboard.html')
 	
 @app.route('/')
-def dash_overview():
+def dash_overview_2():
 	return render_template('olddashboard.html')
 
 
