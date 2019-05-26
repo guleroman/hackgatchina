@@ -1,5 +1,5 @@
 ﻿from flask import render_template
-from app import app
+#from app import app
 import plotly
 import plotly.graph_objs as go
 
@@ -19,6 +19,9 @@ import plotly.graph_objs as go
 my_google_maps_api_key = 'AIzaSyCLXxaOd3K8TmDd21PYtP8nK_ibDZ4h8Ss'
 mapbox_access_token = 'pk.eyJ1IjoiamFja2x1byIsImEiOiJjajNlcnh3MzEwMHZtMzNueGw3NWw5ZXF5In0.fk8k06T96Ml9CLGgKmk81w'
 plotly.tools.set_credentials_file(username='sadrik81', api_key='L63ZtbLhPRTl01T9ykKn')
+
+app = Flask(__name__)
+app.config['JSON_AS_ASCII'] = False
 
 def create_plot():
 
@@ -115,3 +118,7 @@ def dash_overview():
 @app.route('/')
 def dash_overview_2():
 	return render_template('olddashboard.html')
+
+if __name__ == '__main__':
+
+    app.run(debug=False,threaded = True, host='0.0.0.0', port=5000)
