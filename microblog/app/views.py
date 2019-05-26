@@ -16,7 +16,7 @@ import os
 
 import twitter
 
-import nltk
+#import nltk
 
 
 app = Flask(__name__)
